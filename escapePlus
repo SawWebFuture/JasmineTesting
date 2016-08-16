@@ -1,0 +1,20 @@
+//	escapePlus
+	it("escapePlus must escape plus character (onePlusEscape) to %2B", function() {
+		var onePlusEscape = Utility.escapePlus("+");
+		expect(onePlusEscape).toBe("%2B");
+	});
+	
+	it("escapePlus must escape plus character (twoPlusEscape) to %2B", function() {
+		var twoPlusEscape = Utility.escapePlus("+plus+");
+		expect(twoPlusEscape).toBe("%2Bplus%2B");
+	});
+	
+	it("escapePlus must escape plus character (multiplePlusEscape) to %2B", function() {
+		var multiplePlusEscape = Utility.escapePlus("this+that+all+our+");
+		expect(multiplePlusEscape).toBe("this%2Bthat%2Ball%2Bour%2B");
+	});
+	
+	it("escapePlus must not escape if no plus character is found", function() {
+		var nonPlus = Utility.escapePlus("plus returned");
+		expect(nonPlus).toBe("plus returned");
+	});
