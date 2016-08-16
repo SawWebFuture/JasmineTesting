@@ -1,0 +1,66 @@
+// all possible variations on NaN Unit testing
+//	replacePossibleNaN
+	it("replacePossibleNaN must replace NaN (word) with n.a.", function() {
+		var word = Utility.replacePossibleNaN("Hello");
+		expect(word).toBe("n.a.");
+	});
+	
+	it("replacePossibleNaN must replace NaN (date) with n.a.", function() {
+		var date = Utility.replacePossibleNaN("2005/12/12");
+		expect(date).toBe("n.a.");
+	});
+	
+	it("replacePossibleNaN must replace NaN (undefinedString) with n.a.", function() {
+		var undefinedString = Utility.replacePossibleNaN(undefined);
+		expect(undefinedString).toBe("n.a.");
+	});
+	
+	it("replacePossibleNaN must replace NaN (NaNString) with n.a.", function() {
+		var NaNString = Utility.replacePossibleNaN("NaN");
+		expect(NaNString).toBe("n.a.");
+	});
+	
+	it("replacePossibleNaN must replace NaN (NaNValue) with n.a.", function() {
+		var NaNValue = Utility.replacePossibleNaN(NaN);
+		expect(NaNValue).toBe("n.a.");
+	});
+	
+	it("replacePossibleNaN must replace NaN (fractions) with n.a.", function() {
+		var fractions = Utility.replacePossibleNaN(0 / 0);
+		expect(fractions).toBe("n.a.");
+	});
+	
+	it("replacePossibleNaN must replace non-NaN (num) with original value", function() {
+		var num = Utility.replacePossibleNaN(123);
+		expect(num).toBe(123);
+	});
+	
+	it("replacePossibleNaN must replace non-NaN (negativeDecNum) with original value", function() {
+		var negativeDecNum = Utility.replacePossibleNaN(-1.23);
+		expect(negativeDecNum).toBe(-1.23);
+	});
+	
+	it("replacePossibleNaN must replace non-NaN (arithmatic) with original value", function() {
+		var arithmatic = Utility.replacePossibleNaN(5-2);
+		expect(arithmatic).toBe(5-2);
+	});
+	
+	it("replacePossibleNaN must replace non-NaN (zero) with original value", function() {
+		var zero = Utility.replacePossibleNaN(0);
+		expect(zero).toBe(0);
+	});
+	
+	it("replacePossibleNaN must replace non-NaN (numString) with original value", function() {
+		var numString = Utility.replacePossibleNaN("123");
+		expect(numString).toBe("123");
+	});
+	
+	it("replacePossibleNaN must replace non-NaN (empty) with original value", function() {
+		var empty = Utility.replacePossibleNaN("");
+		expect(empty).toBe("");
+	});
+	
+	it("replacePossibleNaN must replace non-NaN (boolean) with original value", function() {
+		var boolean = Utility.replacePossibleNaN(true);
+		expect(boolean).toBe(true);
+	});
